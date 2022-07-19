@@ -27,17 +27,19 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(CurrentUserApi.class)
 @Import({
-  WebSecurityConfig.class,
-  JacksonCustomizations.class,
-  UserService.class,
-  ValidationAutoConfiguration.class,
-  BCryptPasswordEncoder.class
+    WebSecurityConfig.class,
+    JacksonCustomizations.class,
+    UserService.class,
+    ValidationAutoConfiguration.class,
+    BCryptPasswordEncoder.class
 })
 public class CurrentUserApiTest extends TestWithCurrentUser {
 
-  @Autowired private MockMvc mvc;
+  @Autowired
+  private MockMvc mvc;
 
-  @MockBean private UserQueryService userQueryService;
+  @MockBean
+  private UserQueryService userQueryService;
 
   @Override
   @BeforeEach

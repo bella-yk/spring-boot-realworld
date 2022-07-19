@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MyBatisArticleFavoriteRepository implements ArticleFavoriteRepository {
+
   private ArticleFavoriteMapper mapper;
 
   @Autowired

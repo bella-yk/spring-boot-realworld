@@ -18,8 +18,12 @@ public class UpdateUserParam {
   @Email(message = "should be an email")
   private String email = "";
 
-  @Builder.Default private String password = "";
-  @Builder.Default private String username = "";
-  @Builder.Default private String bio = "";
-  @Builder.Default private String image = "";
+  @Builder.Default
+  private String password = "";
+  @Builder.Default
+  private String username = "";
+  @Builder.Default
+  private String bio = "";
+  @Builder.Default
+  private String image = "";
 }

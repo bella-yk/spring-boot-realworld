@@ -13,6 +13,7 @@ import javax.validation.Payload;
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DuplicatedArticleConstraint {
+
   String message() default "article name exists";
 
   Class<?>[] groups() default {};

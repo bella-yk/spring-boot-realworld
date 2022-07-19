@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class FollowRelation {
+
   private String userId;
   private String targetId;
 

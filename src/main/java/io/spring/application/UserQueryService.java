@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class UserQueryService {
+
   private UserReadService userReadService;
 
   public Optional<UserData> findById(String id) {

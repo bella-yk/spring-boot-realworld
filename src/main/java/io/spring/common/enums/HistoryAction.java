@@ -4,17 +4,17 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public enum HistoryAction {
-    NEW("new"),
-    EDIT("edit"),
-    DELETE("delete");
+  NEW("new"),
+  EDIT("edit"),
+  DELETE("delete");
 
-    private String actionCode;
+  private String actionCode;
 
-    HistoryAction(String actionCode ) {
-        this.actionCode = actionCode;
-    }
+  HistoryAction(String actionCode) {
+    this.actionCode = actionCode;
+  }
 
-    public String getCode() {
-        return this.actionCode;
-    }
+  public String getCode() {
+    return this.actionCode;
+  }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "tags")
 @AllArgsConstructor
 public class TagsApi {
+
   private TagsQueryService tagsQueryService;
 
   @GetMapping

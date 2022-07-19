@@ -1,6 +1,7 @@
 package io.spring.application;
 
 public abstract class PageCursor<T> {
+
   private T data;
 
   public PageCursor(T data) {

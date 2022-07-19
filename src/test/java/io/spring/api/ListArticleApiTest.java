@@ -25,13 +25,18 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(ArticlesApi.class)
 @Import({WebSecurityConfig.class, JacksonCustomizations.class})
 public class ListArticleApiTest extends TestWithCurrentUser {
-  @MockBean private ArticleRepository articleRepository;
 
-  @MockBean private ArticleQueryService articleQueryService;
+  @MockBean
+  private ArticleRepository articleRepository;
 
-  @MockBean private ArticleCommandService articleCommandService;
+  @MockBean
+  private ArticleQueryService articleQueryService;
 
-  @Autowired private MockMvc mvc;
+  @MockBean
+  private ArticleCommandService articleCommandService;
+
+  @Autowired
+  private MockMvc mvc;
 
   @Override
   @BeforeEach
@@ -46,7 +51,7 @@ public class ListArticleApiTest extends TestWithCurrentUser {
         new ArticleDataList(
             asList(articleDataFixture("1", user), articleDataFixture("2", user)), 2);
     when(articleQueryService.findRecentArticles(
-            eq(null), eq(null), eq(null), eq(new Page(0, 20)), eq(null)))
+        eq(null), eq(null), eq(null), eq(new Page(0, 20)), eq(null)))
         .thenReturn(articleDataList);
     RestAssuredMockMvc.when().get("/articles").prettyPeek().then().statusCode(200);
   }

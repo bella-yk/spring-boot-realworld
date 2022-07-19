@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 public class CursorPager<T extends Node> {
+
   private List<T> data;
   private boolean next;
   private boolean previous;

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @EqualsAndHashCode
 public class ArticleFavorite {
+
   private String articleId;
   private String userId;
 

@@ -33,13 +33,18 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(ArticleFavoriteApi.class)
 @Import({WebSecurityConfig.class, JacksonCustomizations.class})
 public class ArticleFavoriteApiTest extends TestWithCurrentUser {
-  @Autowired private MockMvc mvc;
 
-  @MockBean private ArticleFavoriteRepository articleFavoriteRepository;
+  @Autowired
+  private MockMvc mvc;
 
-  @MockBean private ArticleRepository articleRepository;
+  @MockBean
+  private ArticleFavoriteRepository articleFavoriteRepository;
 
-  @MockBean private ArticleQueryService articleQueryService;
+  @MockBean
+  private ArticleRepository articleRepository;
+
+  @MockBean
+  private ArticleQueryService articleQueryService;
 
   private Article article;
 

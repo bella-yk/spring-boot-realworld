@@ -10,6 +10,7 @@ import java.util.List;
 @lombok.Getter
 @JsonRootName("errors")
 public class ErrorResource {
+
   private List<FieldErrorResource> fieldErrors;
 
   public ErrorResource(List<FieldErrorResource> fieldErrorResources) {

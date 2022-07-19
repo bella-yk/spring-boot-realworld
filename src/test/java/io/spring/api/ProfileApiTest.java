@@ -25,11 +25,14 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(ProfileApi.class)
 @Import({WebSecurityConfig.class, JacksonCustomizations.class})
 public class ProfileApiTest extends TestWithCurrentUser {
+
   private User anotherUser;
 
-  @Autowired private MockMvc mvc;
+  @Autowired
+  private MockMvc mvc;
 
-  @MockBean private ProfileQueryService profileQueryService;
+  @MockBean
+  private ProfileQueryService profileQueryService;
 
   private ProfileData profileData;
 

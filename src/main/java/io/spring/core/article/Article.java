@@ -16,6 +16,7 @@ import org.joda.time.DateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
 public class Article {
+
   private String userId;
   private String id;
   private String slug;

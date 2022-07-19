@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DefaultJwtService implements JwtService {
+
   private final SecretKey signingKey;
   private final SignatureAlgorithm signatureAlgorithm;
   private int sessionTime;

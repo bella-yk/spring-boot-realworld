@@ -6,6 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class ArticleDataList {
+
   @JsonProperty("articles")
   private final List<ArticleData> articleDatas;
 

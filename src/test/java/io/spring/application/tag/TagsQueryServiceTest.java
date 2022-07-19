@@ -13,9 +13,12 @@ import org.springframework.context.annotation.Import;
 
 @Import({TagsQueryService.class, MyBatisArticleRepository.class})
 public class TagsQueryServiceTest extends DbTestBase {
-  @Autowired private TagsQueryService tagsQueryService;
 
-  @Autowired private ArticleRepository articleRepository;
+  @Autowired
+  private TagsQueryService tagsQueryService;
+
+  @Autowired
+  private ArticleRepository articleRepository;
 
   @Test
   public void should_get_all_tags() {

@@ -1,12 +1,12 @@
 package io.spring.application.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-
 import java.util.List;
+import lombok.Getter;
 
 @Getter
 public class HistoryDataList {
+
   @JsonProperty("histories")
   private final List<HistoryData> historyDatas;
 

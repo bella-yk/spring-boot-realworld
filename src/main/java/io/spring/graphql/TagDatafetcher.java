@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 @DgsComponent
 @AllArgsConstructor
 public class TagDatafetcher {
+
   private TagsQueryService tagsQueryService;
 
   @DgsData(parentType = DgsConstants.QUERY_TYPE, field = QUERY.Tags)

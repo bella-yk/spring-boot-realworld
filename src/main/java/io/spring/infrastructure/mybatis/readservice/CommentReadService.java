@@ -9,6 +9,7 @@ import org.joda.time.DateTime;
 
 @Mapper
 public interface CommentReadService {
+
   CommentData findById(@Param("id") String id);
 
   List<CommentData> findByArticleId(@Param("articleId") String articleId);

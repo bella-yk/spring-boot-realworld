@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/articles/{slug}/comments")
 @AllArgsConstructor
 public class CommentsApi {
+
   private ArticleRepository articleRepository;
   private CommentRepository commentRepository;
   private CommentQueryService commentQueryService;
@@ -97,6 +98,7 @@ public class CommentsApi {
 @NoArgsConstructor
 @JsonRootName("comment")
 class NewCommentParam {
+
   @NotBlank(message = "can't be empty")
   private String body;
 }

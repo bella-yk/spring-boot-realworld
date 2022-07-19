@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class ProfileQueryService {
+
   private UserReadService userReadService;
   private UserRelationshipQueryService userRelationshipQueryService;
 
@@ -28,7 +29,7 @@ public class ProfileQueryService {
               userData.getImage(),
               currentUser != null
                   && userRelationshipQueryService.isUserFollowing(
-                      currentUser.getId(), userData.getId()));
+                  currentUser.getId(), userData.getId()));
       return Optional.of(profileData);
     }
   }

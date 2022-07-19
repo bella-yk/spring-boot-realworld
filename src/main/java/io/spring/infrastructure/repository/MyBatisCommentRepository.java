@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MyBatisCommentRepository implements CommentRepository {
+
   private CommentMapper commentMapper;
 
   @Autowired

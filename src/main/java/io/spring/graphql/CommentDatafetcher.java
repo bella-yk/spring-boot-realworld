@@ -30,6 +30,7 @@ import org.joda.time.format.ISODateTimeFormat;
 @DgsComponent
 @AllArgsConstructor
 public class CommentDatafetcher {
+
   private CommentQueryService commentQueryService;
 
   @DgsData(parentType = COMMENTPAYLOAD.TYPE_NAME, field = COMMENTPAYLOAD.Comment)

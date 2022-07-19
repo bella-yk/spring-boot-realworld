@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class UserWithToken {
+
   private String email;
   private String username;
   private String bio;

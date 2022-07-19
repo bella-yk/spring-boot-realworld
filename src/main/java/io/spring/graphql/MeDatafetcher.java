@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 @DgsComponent
 @AllArgsConstructor
 public class MeDatafetcher {
+
   private UserQueryService userQueryService;
   private JwtService jwtService;
 

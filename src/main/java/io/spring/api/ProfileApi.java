@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "profiles/{username}")
 @AllArgsConstructor
 public class ProfileApi {
+
   private ProfileQueryService profileQueryService;
   private UserRepository userRepository;
 

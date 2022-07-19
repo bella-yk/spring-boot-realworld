@@ -12,6 +12,7 @@ import org.joda.time.DateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArticleData implements io.spring.application.Node {
+
   private String id;
   private String slug;
   private String title;

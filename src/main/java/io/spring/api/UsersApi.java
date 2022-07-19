@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 public class UsersApi {
+
   private UserRepository userRepository;
   private UserQueryService userQueryService;
   private PasswordEncoder passwordEncoder;
@@ -70,6 +71,7 @@ public class UsersApi {
 @JsonRootName("user")
 @NoArgsConstructor
 class LoginParam {
+
   @NotBlank(message = "can't be empty")
   @Email(message = "should be an email")
   private String email;

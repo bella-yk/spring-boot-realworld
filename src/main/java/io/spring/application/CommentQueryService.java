@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class CommentQueryService {
+
   private CommentReadService commentReadService;
   private UserRelationshipQueryService userRelationshipQueryService;
 

@@ -17,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 @Service
 @Validated
 public class UserService {
+
   private UserRepository userRepository;
   private String defaultImage;
   private PasswordEncoder passwordEncoder;
@@ -69,7 +70,8 @@ public class UserService {
 
 class UpdateUserValidator implements ConstraintValidator<UpdateUserConstraint, UpdateUserCommand> {
 
-  @Autowired private UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
   @Override
   public boolean isValid(UpdateUserCommand value, ConstraintValidatorContext context) {

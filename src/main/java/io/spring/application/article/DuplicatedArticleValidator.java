@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 class DuplicatedArticleValidator
     implements ConstraintValidator<DuplicatedArticleConstraint, String> {
 
-  @Autowired private ArticleQueryService articleQueryService;
+  @Autowired
+  private ArticleQueryService articleQueryService;
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {

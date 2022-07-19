@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(of = "name")
 public class Tag {
+
   private String id;
   private String name;
 

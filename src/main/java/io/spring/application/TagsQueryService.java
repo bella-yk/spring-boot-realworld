@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class TagsQueryService {
+
   private TagReadService tagReadService;
 
   public List<String> allTags() {

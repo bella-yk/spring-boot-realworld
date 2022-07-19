@@ -8,6 +8,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = DuplicatedUsernameValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @interface DuplicatedUsernameConstraint {
+
   String message() default "duplicated username";
 
   Class<?>[] groups() default {};

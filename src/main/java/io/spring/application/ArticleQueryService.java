@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class ArticleQueryService {
+
   private ArticleReadService articleReadService;
   private UserRelationshipQueryService userRelationshipQueryService;
   private ArticleFavoritesReadService articleFavoritesReadService;

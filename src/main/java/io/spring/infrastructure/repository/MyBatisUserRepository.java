@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MyBatisUserRepository implements UserRepository {
+
   private final UserMapper userMapper;
 
   @Autowired

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class MyBatisArticleRepository implements ArticleRepository {
+
   private ArticleMapper articleMapper;
 
   public MyBatisArticleRepository(ArticleMapper articleMapper) {

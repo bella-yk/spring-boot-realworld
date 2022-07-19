@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/articles")
 @AllArgsConstructor
 public class ArticlesApi {
+
   private ArticleCommandService articleCommandService;
   private ArticleQueryService articleQueryService;
 

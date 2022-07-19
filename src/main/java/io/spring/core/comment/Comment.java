@@ -10,6 +10,7 @@ import org.joda.time.DateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Comment {
+
   private String id;
   private String body;
   private String userId;

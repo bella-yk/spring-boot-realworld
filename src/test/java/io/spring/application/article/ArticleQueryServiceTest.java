@@ -29,19 +29,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 
 @Import({
-  ArticleQueryService.class,
-  MyBatisUserRepository.class,
-  MyBatisArticleRepository.class,
-  MyBatisArticleFavoriteRepository.class
+    ArticleQueryService.class,
+    MyBatisUserRepository.class,
+    MyBatisArticleRepository.class,
+    MyBatisArticleFavoriteRepository.class
 })
 public class ArticleQueryServiceTest extends DbTestBase {
-  @Autowired private ArticleQueryService queryService;
 
-  @Autowired private ArticleRepository articleRepository;
+  @Autowired
+  private ArticleQueryService queryService;
 
-  @Autowired private UserRepository userRepository;
+  @Autowired
+  private ArticleRepository articleRepository;
 
-  @Autowired private ArticleFavoriteRepository articleFavoriteRepository;
+  @Autowired
+  private UserRepository userRepository;
+
+  @Autowired
+  private ArticleFavoriteRepository articleFavoriteRepository;
 
   private User user;
   private Article article;

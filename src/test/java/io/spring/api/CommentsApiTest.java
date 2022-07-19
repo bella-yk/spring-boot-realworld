@@ -34,15 +34,19 @@ import org.springframework.test.web.servlet.MockMvc;
 @Import({WebSecurityConfig.class, JacksonCustomizations.class})
 public class CommentsApiTest extends TestWithCurrentUser {
 
-  @MockBean private ArticleRepository articleRepository;
+  @MockBean
+  private ArticleRepository articleRepository;
 
-  @MockBean private CommentRepository commentRepository;
-  @MockBean private CommentQueryService commentQueryService;
+  @MockBean
+  private CommentRepository commentRepository;
+  @MockBean
+  private CommentQueryService commentQueryService;
 
   private Article article;
   private CommentData commentData;
   private Comment comment;
-  @Autowired private MockMvc mvc;
+  @Autowired
+  private MockMvc mvc;
 
   @BeforeEach
   public void setUp() throws Exception {

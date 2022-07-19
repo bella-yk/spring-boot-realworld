@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class FieldErrorResource {
+
   private String resource;
   private String field;
   private String code;

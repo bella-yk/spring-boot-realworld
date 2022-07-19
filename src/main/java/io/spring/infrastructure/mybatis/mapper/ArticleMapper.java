@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ArticleMapper {
+
   void insert(@Param("article") Article article);
 
   Article findById(@Param("id") String id);
