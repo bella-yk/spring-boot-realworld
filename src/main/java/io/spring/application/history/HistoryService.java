@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import io.spring.application.data.HistoryData;
 import io.spring.application.data.HistoryDataList;
 import io.spring.core.article.Article;
-import io.spring.core.history.HistoryAction;
+import io.spring.common.enums.HistoryAction;
 import io.spring.entity.History;
 import io.spring.infrastructure.jpa.repository.HistoryRepository;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,6 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.joda.time.LocalDateTime;
-import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -63,24 +62,34 @@ public class HistoryService {
         historyRepository.saveAndFlush(history);
     }
 
-    public HistoryDataList findUserHistories(Article article, int page, int limit) {
-        Pageable pageable =
-                PageRequest.of(page, limit);
+    public Optional<HistoryData> findHistoryById(Integer id) {
+        return historyRepository.findById(id)
+            .map(history -> {
+                return new HistoryData(
+                    history.getId(),
+                    history.getHistoryAction(),
+                    history.getArticleId(),
+                    LocalDateTime.fromDateFields(history.getCreatedAt()).toDateTime(),
+                    new Gson().fromJson(history.getArticleData(), Article.class)
+                );
+            });
+    }
 
+    public HistoryDataList findHistoriesByArticle(Article article, int page, int limit) {
+        Pageable pageable = PageRequest.of(page, limit);
         Page<History> historyPage = historyRepository.findAllByArticleId(article.getId(), pageable);
-
         List<HistoryData> histories =
                 Optional
-                    .ofNullable(historyPage.getContent())
+                    .of(historyPage.getContent())
                     .orElse(Collections.emptyList())
                     .stream()
                     .map(history ->
                         new HistoryData(
-                                history.getId(),
-                                history.getHistoryAction(),
-                                history.getArticleId(),
-                                LocalDateTime.fromDateFields(history.getCreatedAt()).toDateTime(),
-                                new Gson().fromJson(history.getArticleData(), Article.class))
+                            history.getId(),
+                            history.getHistoryAction(),
+                            history.getArticleId(),
+                            LocalDateTime.fromDateFields(history.getCreatedAt()).toDateTime(),
+                            new Gson().fromJson(history.getArticleData(), Article.class))
                     ).collect(Collectors.toList());
         return new HistoryDataList(histories, Math.toIntExact(historyPage.getTotalElements()));
     }
@@ -89,14 +98,10 @@ public class HistoryService {
         if (o == null) {
             return null;
         }
-        String json;
-
         try {
-            json = objectMapper.writeValueAsString(o);
+            return objectMapper.writeValueAsString(o);
         } catch (JsonProcessingException e) {
-            json = "";
+            return "";
         }
-
-        return json;
     }
 }

@@ -13,11 +13,28 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping(path = "/histories")
 public class HistoryApi {
   private ArticleRepository articleRepository;
   private HistoryService historyService;
 
-  @GetMapping(path = "histories")
+
+  @GetMapping(path = "/{id}")
+  public ResponseEntity<?> getHistory(
+          @PathVariable("id") Integer id,
+          @AuthenticationPrincipal User user) {
+      return historyService
+          .findHistoryById(id)
+          .map(historyData -> {
+              if (!AuthorizationService.canWriteArticle(user, historyData.getArticleData())) {
+                  throw new NoAuthorizationException();
+              }
+              return ResponseEntity.ok(historyData);
+          })
+          .orElseThrow(ResourceNotFoundException::new);
+  }
+
+  @GetMapping(path = "/list")
   public ResponseEntity<?> getHistories(
       @RequestParam(value = "slug") String slug,
       @RequestParam(value = "page", defaultValue = "0") int page,
@@ -30,7 +47,7 @@ public class HistoryApi {
           throw new NoAuthorizationException();
         }
 
-        return ResponseEntity.ok(historyService.findUserHistories(article, page, limit));
+        return ResponseEntity.ok(historyService.findHistoriesByArticle(article, page, limit));
       })
     .orElseThrow(ResourceNotFoundException::new);
   }
