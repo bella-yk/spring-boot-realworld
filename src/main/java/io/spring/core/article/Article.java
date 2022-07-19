@@ -2,6 +2,7 @@ package io.spring.core.article;
 
 import static java.util.stream.Collectors.toList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.spring.Util;
 import java.util.HashSet;
 import java.util.List;
@@ -22,7 +23,9 @@ public class Article {
   private String description;
   private String body;
   private List<Tag> tags;
+  @JsonIgnore
   private DateTime createdAt;
+  @JsonIgnore
   private DateTime updatedAt;
 
   public Article(
