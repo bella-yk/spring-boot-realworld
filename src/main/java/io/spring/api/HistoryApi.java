@@ -39,7 +39,7 @@ public class HistoryApi {
         .orElseThrow(ResourceNotFoundException::new);
   }
 
-  @GetMapping(path = "/list")
+  @GetMapping(path = "")
   public ResponseEntity<?> getHistories(
       @RequestParam(value = "slug") String slug,
       @RequestParam(value = "page", defaultValue = "0") int page,
