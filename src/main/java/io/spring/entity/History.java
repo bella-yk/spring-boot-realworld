@@ -1,6 +1,6 @@
 package io.spring.entity;
 
-import io.spring.core.history.HistoryAction;
+import io.spring.common.enums.HistoryAction;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

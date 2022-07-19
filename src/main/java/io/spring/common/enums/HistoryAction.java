@@ -1,4 +1,4 @@
-package io.spring.core.history;
+package io.spring.common.enums;
 
 import lombok.RequiredArgsConstructor;
 

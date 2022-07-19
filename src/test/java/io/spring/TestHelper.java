@@ -4,7 +4,7 @@ import io.spring.application.data.ArticleData;
 import io.spring.application.data.HistoryData;
 import io.spring.application.data.ProfileData;
 import io.spring.core.article.Article;
-import io.spring.core.history.HistoryAction;
+import io.spring.common.enums.HistoryAction;
 import io.spring.core.user.User;
 import java.util.ArrayList;
 import java.util.Arrays;

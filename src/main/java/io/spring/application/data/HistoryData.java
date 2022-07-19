@@ -3,7 +3,7 @@ package io.spring.application.data;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.spring.application.DateTimeCursor;
 import io.spring.core.article.Article;
-import io.spring.core.history.HistoryAction;
+import io.spring.common.enums.HistoryAction;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
