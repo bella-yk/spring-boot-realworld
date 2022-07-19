@@ -2,7 +2,7 @@ package io.spring.entity;
 
 import io.spring.common.enums.HistoryAction;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,9 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 @Getter
@@ -38,9 +41,10 @@ public class History implements Serializable {
   @Column(name = "user_id")
   private String userId;
 
-  @CreatedDate
-  @Column(name = "created_at", updatable = false)
-  private Timestamp createdAt;
+  @CreationTimestamp
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "created_at", nullable = false, updatable = false)
+  private Date createdAt;
 
   @Column(name = "article_data", columnDefinition = "text")
   private String articleData;
