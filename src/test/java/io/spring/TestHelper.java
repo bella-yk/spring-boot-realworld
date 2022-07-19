@@ -1,8 +1,10 @@
 package io.spring;
 
 import io.spring.application.data.ArticleData;
+import io.spring.application.data.HistoryData;
 import io.spring.application.data.ProfileData;
 import io.spring.core.article.Article;
+import io.spring.core.history.HistoryAction;
 import io.spring.core.user.User;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,5 +40,14 @@ public class TestHelper {
         article.getUpdatedAt(),
         Arrays.asList("joda"),
         new ProfileData(user.getId(), user.getUsername(), user.getBio(), user.getImage(), false));
+  }
+
+  public static HistoryData historyDataFixture(Article article, User user) {
+    return new HistoryData(
+            20,
+            HistoryAction.NEW,
+            article.getId(),
+            DateTime.now(),
+            null);
   }
 }
