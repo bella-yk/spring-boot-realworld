@@ -32,15 +32,13 @@ public class MysqlConfig {
   @Bean
   public LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory(
       EntityManagerFactoryBuilder builder, @Qualifier("second-datasource") DataSource dataSource) {
-    return builder
-        .dataSource(dataSource)
-        .packages("io.spring.entity")
-        .build();
+    return builder.dataSource(dataSource).packages("io.spring.entity").build();
   }
 
   @Bean
   public PlatformTransactionManager transactionManager(
-      @Qualifier("mysqlEntityManagerFactory") LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory) {
+      @Qualifier("mysqlEntityManagerFactory")
+          LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory) {
     return new JpaTransactionManager(Objects.requireNonNull(mysqlEntityManagerFactory.getObject()));
   }
 }

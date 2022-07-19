@@ -16,8 +16,7 @@ public class CommentData implements Node {
 
   private String id;
   private String body;
-  @JsonIgnore
-  private String articleId;
+  @JsonIgnore private String articleId;
   private DateTime createdAt;
   private DateTime updatedAt;
 

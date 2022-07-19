@@ -18,14 +18,11 @@ import org.springframework.test.context.ActiveProfiles;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ArticleRepositoryTransactionTest {
 
-  @Autowired
-  private ArticleRepository articleRepository;
+  @Autowired private ArticleRepository articleRepository;
 
-  @Autowired
-  private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
 
-  @Autowired
-  private ArticleMapper articleMapper;
+  @Autowired private ArticleMapper articleMapper;
 
   @Test
   public void transactional_test() {

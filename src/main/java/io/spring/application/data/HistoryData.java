@@ -18,6 +18,7 @@ public class HistoryData implements io.spring.application.Node {
   private HistoryAction historyAction;
   private String articleId;
   private DateTime createdAt;
+
   @JsonProperty("articleData")
   private Article articleData;
 

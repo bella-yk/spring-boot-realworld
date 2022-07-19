@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 class DuplicatedUsernameValidator
     implements ConstraintValidator<DuplicatedUsernameConstraint, String> {
 
-  @Autowired
-  private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {

@@ -14,11 +14,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 abstract class TestWithCurrentUser {
 
-  @MockBean
-  protected UserRepository userRepository;
+  @MockBean protected UserRepository userRepository;
 
-  @MockBean
-  protected UserReadService userReadService;
+  @MockBean protected UserReadService userReadService;
 
   protected User user;
   protected UserData userData;
@@ -27,8 +25,7 @@ abstract class TestWithCurrentUser {
   protected String username;
   protected String defaultAvatar;
 
-  @MockBean
-  protected JwtService jwtService;
+  @MockBean protected JwtService jwtService;
 
   protected void userFixture() {
     email = "john@jacob.com";

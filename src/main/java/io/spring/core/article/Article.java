@@ -24,10 +24,8 @@ public class Article {
   private String description;
   private String body;
   private List<Tag> tags;
-  @JsonIgnore
-  private DateTime createdAt;
-  @JsonIgnore
-  private DateTime updatedAt;
+  @JsonIgnore private DateTime createdAt;
+  @JsonIgnore private DateTime updatedAt;
 
   public Article(
       String title, String description, String body, List<String> tagList, String userId) {

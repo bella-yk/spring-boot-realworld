@@ -17,7 +17,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 @Getter
 @Setter
@@ -49,11 +48,7 @@ public class History implements Serializable {
   @Column(name = "article_data", columnDefinition = "text")
   private String articleData;
 
-  public History(
-      HistoryAction historyAction,
-      String articleId,
-      String userId,
-      String articleData) {
+  public History(HistoryAction historyAction, String articleId, String userId, String articleData) {
     this.historyAction = historyAction;
     this.articleId = articleId;
     this.userId = userId;

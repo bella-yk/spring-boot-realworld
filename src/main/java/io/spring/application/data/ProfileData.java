@@ -10,8 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProfileData {
 
-  @JsonIgnore
-  private String id;
+  @JsonIgnore private String id;
   private String username;
   private String bio;
   private String image;

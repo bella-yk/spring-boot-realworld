@@ -14,7 +14,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "sqliteEntityManagerFactory", basePackages = "io.spring.core")
+@EnableJpaRepositories(
+    entityManagerFactoryRef = "sqliteEntityManagerFactory",
+    basePackages = "io.spring.core")
 public class SqliteConfig {
 
   @Primary
@@ -28,10 +30,6 @@ public class SqliteConfig {
   @Bean(name = "sqliteEntityManagerFactory")
   public LocalContainerEntityManagerFactoryBean sqliteEntityManager(
       EntityManagerFactoryBuilder builder, @Qualifier("dataSource") DataSource dataSource) {
-    return builder
-        .dataSource(dataSource)
-        .packages("io.spring.core")
-        .build();
+    return builder.dataSource(dataSource).packages("io.spring.core").build();
   }
-
 }

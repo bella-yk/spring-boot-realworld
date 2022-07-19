@@ -5,7 +5,6 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-import com.google.common.collect.Lists;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import io.spring.JacksonCustomizations;
 import io.spring.TestHelper;
@@ -16,6 +15,7 @@ import io.spring.application.history.HistoryService;
 import io.spring.core.article.Article;
 import io.spring.core.article.ArticleRepository;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import org.joda.time.DateTime;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,14 +30,11 @@ import org.springframework.test.web.servlet.MockMvc;
 @Import({WebSecurityConfig.class, JacksonCustomizations.class})
 public class HistoryApiTest extends TestWithCurrentUser {
 
-  @Autowired
-  private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
-  @MockBean
-  private HistoryService historyService;
+  @MockBean private HistoryService historyService;
 
-  @MockBean
-  private ArticleRepository articleRepository;
+  @MockBean private ArticleRepository articleRepository;
 
   @Override
   @BeforeEach
@@ -61,11 +58,10 @@ public class HistoryApiTest extends TestWithCurrentUser {
 
     HistoryData historyData = TestHelper.historyDataFixture(article, user);
 
-    when(articleRepository.findBySlug(eq(Article.toSlug(slug))))
-        .thenReturn(Optional.of(article));
+    when(articleRepository.findBySlug(eq(Article.toSlug(slug)))).thenReturn(Optional.of(article));
 
     when(historyService.findHistoriesByArticle(article, 0, 5))
-        .thenReturn(new HistoryDataList(Lists.newArrayList(historyData), 1));
+        .thenReturn(new HistoryDataList(List.of(historyData), 1));
 
     given()
         .header("Authorization", "Token " + token)
@@ -90,8 +86,7 @@ public class HistoryApiTest extends TestWithCurrentUser {
             "aaaa",
             time);
 
-    when(articleRepository.findBySlug(eq(Article.toSlug(slug))))
-        .thenReturn(Optional.of(article));
+    when(articleRepository.findBySlug(eq(Article.toSlug(slug)))).thenReturn(Optional.of(article));
 
     given()
         .header("Authorization", "Token " + token)
@@ -115,14 +110,8 @@ public class HistoryApiTest extends TestWithCurrentUser {
             user.getId(),
             time);
 
-    when(articleRepository.findBySlug(eq(Article.toSlug(slug))))
-        .thenReturn(Optional.of(article));
+    when(articleRepository.findBySlug(eq(Article.toSlug(slug)))).thenReturn(Optional.of(article));
 
-    given()
-        .queryParam("slug", slug)
-        .when()
-        .get("/histories/list")
-        .then()
-        .statusCode(401);
+    given().queryParam("slug", slug).when().get("/histories/list").then().statusCode(401);
   }
 }

@@ -16,26 +16,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping(path = "/histories")
+@AllArgsConstructor
 public class HistoryApi {
 
   private ArticleRepository articleRepository;
   private HistoryService historyService;
 
-
   @GetMapping(path = "/{id}")
   public ResponseEntity<?> getHistory(
-      @PathVariable("id") Integer id,
-      @AuthenticationPrincipal User user) {
+      @PathVariable("id") Integer id, @AuthenticationPrincipal User user) {
     return historyService
         .findHistoryById(id)
-        .map(historyData -> {
-          if (!AuthorizationService.canWriteArticle(user, historyData.getArticleData())) {
-            throw new NoAuthorizationException();
-          }
-          return ResponseEntity.ok(historyData);
-        })
+        .map(
+            historyData -> {
+              if (!AuthorizationService.canWriteArticle(user, historyData.getArticleData())) {
+                throw new NoAuthorizationException();
+              }
+              return ResponseEntity.ok(historyData);
+            })
         .orElseThrow(ResourceNotFoundException::new);
   }
 
@@ -47,13 +46,14 @@ public class HistoryApi {
       @AuthenticationPrincipal User user) {
     return articleRepository
         .findBySlug(slug)
-        .map(article -> {
-          if (!AuthorizationService.canWriteArticle(user, article)) {
-            throw new NoAuthorizationException();
-          }
+        .map(
+            article -> {
+              if (!AuthorizationService.canWriteArticle(user, article)) {
+                throw new NoAuthorizationException();
+              }
 
-          return ResponseEntity.ok(historyService.findHistoriesByArticle(article, page, limit));
-        })
+              return ResponseEntity.ok(historyService.findHistoriesByArticle(article, page, limit));
+            })
         .orElseThrow(ResourceNotFoundException::new);
   }
 }

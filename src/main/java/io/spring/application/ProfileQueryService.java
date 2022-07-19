@@ -29,7 +29,7 @@ public class ProfileQueryService {
               userData.getImage(),
               currentUser != null
                   && userRelationshipQueryService.isUserFollowing(
-                  currentUser.getId(), userData.getId()));
+                      currentUser.getId(), userData.getId()));
       return Optional.of(profileData);
     }
   }

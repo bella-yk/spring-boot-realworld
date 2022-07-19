@@ -33,14 +33,11 @@ import org.springframework.test.web.servlet.MockMvc;
 @Import({WebSecurityConfig.class, JacksonCustomizations.class})
 public class ArticlesApiTest extends TestWithCurrentUser {
 
-  @Autowired
-  private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
-  @MockBean
-  private ArticleQueryService articleQueryService;
+  @MockBean private ArticleQueryService articleQueryService;
 
-  @MockBean
-  private ArticleCommandService articleCommandService;
+  @MockBean private ArticleCommandService articleCommandService;
 
   @Override
   @BeforeEach

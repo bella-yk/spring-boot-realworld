@@ -23,24 +23,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 
 @Import({
-    MyBatisCommentRepository.class,
-    MyBatisUserRepository.class,
-    CommentQueryService.class,
-    MyBatisArticleRepository.class
+  MyBatisCommentRepository.class,
+  MyBatisUserRepository.class,
+  CommentQueryService.class,
+  MyBatisArticleRepository.class
 })
 public class CommentQueryServiceTest extends DbTestBase {
 
-  @Autowired
-  private CommentRepository commentRepository;
+  @Autowired private CommentRepository commentRepository;
 
-  @Autowired
-  private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
 
-  @Autowired
-  private CommentQueryService commentQueryService;
+  @Autowired private CommentQueryService commentQueryService;
 
-  @Autowired
-  private ArticleRepository articleRepository;
+  @Autowired private ArticleRepository articleRepository;
 
   private User user;
 

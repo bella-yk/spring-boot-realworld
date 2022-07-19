@@ -32,30 +32,24 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(UsersApi.class)
 @Import({
-    WebSecurityConfig.class,
-    UserQueryService.class,
-    BCryptPasswordEncoder.class,
-    JacksonCustomizations.class
+  WebSecurityConfig.class,
+  UserQueryService.class,
+  BCryptPasswordEncoder.class,
+  JacksonCustomizations.class
 })
 public class UsersApiTest {
 
-  @Autowired
-  private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
-  @MockBean
-  private UserRepository userRepository;
+  @MockBean private UserRepository userRepository;
 
-  @MockBean
-  private JwtService jwtService;
+  @MockBean private JwtService jwtService;
 
-  @MockBean
-  private UserReadService userReadService;
+  @MockBean private UserReadService userReadService;
 
-  @MockBean
-  private UserService userService;
+  @MockBean private UserService userService;
 
-  @Autowired
-  private PasswordEncoder passwordEncoder;
+  @Autowired private PasswordEncoder passwordEncoder;
 
   private String defaultAvatar;
 

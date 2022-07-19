@@ -18,10 +18,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @SuppressWarnings("SpringJavaAutowiringInspection")
 public class JwtTokenFilter extends OncePerRequestFilter {
 
-  @Autowired
-  private UserRepository userRepository;
-  @Autowired
-  private JwtService jwtService;
+  @Autowired private UserRepository userRepository;
+  @Autowired private JwtService jwtService;
   private final String header = "Authorization";
 
   @Override

@@ -35,63 +35,57 @@ public class HistoryService {
 
   @AfterReturning(
       pointcut = "execution(* io.spring.application.article.ArticleCommandService.*(..))",
-      returning = "results"
-  )
+      returning = "results")
   public void saveOfCreateHistory(JoinPoint joinPoint, Article results) {
     HistoryAction action =
-        joinPoint.getSignature().getName().equals("createArticle") ? HistoryAction.NEW
+        joinPoint.getSignature().getName().equals("createArticle")
+            ? HistoryAction.NEW
             : HistoryAction.EDIT;
 
     this.saveHistory(action, results);
   }
 
-  @After(
-      value = "execution(* io.spring.core.article.ArticleRepository.remove(..))"
-  )
+  @After(value = "execution(* io.spring.core.article.ArticleRepository.remove(..))")
   public void saveOfDeleteHistory(JoinPoint joinPoint) {
     Article article = (Article) Arrays.stream(joinPoint.getArgs()).findFirst().get();
     this.saveHistory(HistoryAction.DELETE, article);
   }
 
   private void saveHistory(HistoryAction action, Article article) {
-    History history = new History(action,
-        article.getId(),
-        article.getUserId(),
-        objectToJsonString(article)
-    );
+    History history =
+        new History(action, article.getId(), article.getUserId(), objectToJsonString(article));
 
     historyRepository.saveAndFlush(history);
   }
 
   public Optional<HistoryData> findHistoryById(Integer id) {
-    return historyRepository.findById(id)
-        .map(history -> {
-          return new HistoryData(
-              history.getId(),
-              history.getHistoryAction(),
-              history.getArticleId(),
-              LocalDateTime.fromDateFields(history.getCreatedAt()).toDateTime(),
-              new Gson().fromJson(history.getArticleData(), Article.class)
-          );
-        });
+    return historyRepository
+        .findById(id)
+        .map(
+            history -> {
+              return new HistoryData(
+                  history.getId(),
+                  history.getHistoryAction(),
+                  history.getArticleId(),
+                  LocalDateTime.fromDateFields(history.getCreatedAt()).toDateTime(),
+                  new Gson().fromJson(history.getArticleData(), Article.class));
+            });
   }
 
   public HistoryDataList findHistoriesByArticle(Article article, int page, int limit) {
     Pageable pageable = PageRequest.of(page, limit);
     Page<History> historyPage = historyRepository.findAllByArticleId(article.getId(), pageable);
     List<HistoryData> histories =
-        Optional
-            .of(historyPage.getContent())
-            .orElse(Collections.emptyList())
-            .stream()
-            .map(history ->
-                new HistoryData(
-                    history.getId(),
-                    history.getHistoryAction(),
-                    history.getArticleId(),
-                    LocalDateTime.fromDateFields(history.getCreatedAt()).toDateTime(),
-                    new Gson().fromJson(history.getArticleData(), Article.class))
-            ).collect(Collectors.toList());
+        Optional.of(historyPage.getContent()).orElse(Collections.emptyList()).stream()
+            .map(
+                history ->
+                    new HistoryData(
+                        history.getId(),
+                        history.getHistoryAction(),
+                        history.getArticleId(),
+                        LocalDateTime.fromDateFields(history.getCreatedAt()).toDateTime(),
+                        new Gson().fromJson(history.getArticleData(), Article.class)))
+            .collect(Collectors.toList());
     return new HistoryDataList(histories, Math.toIntExact(historyPage.getTotalElements()));
   }
 

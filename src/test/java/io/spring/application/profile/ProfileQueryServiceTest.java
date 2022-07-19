@@ -15,10 +15,8 @@ import org.springframework.context.annotation.Import;
 @Import({ProfileQueryService.class, MyBatisUserRepository.class})
 public class ProfileQueryServiceTest extends DbTestBase {
 
-  @Autowired
-  private ProfileQueryService profileQueryService;
-  @Autowired
-  private UserRepository userRepository;
+  @Autowired private ProfileQueryService profileQueryService;
+  @Autowired private UserRepository userRepository;
 
   @Test
   public void should_fetch_profile_success() {

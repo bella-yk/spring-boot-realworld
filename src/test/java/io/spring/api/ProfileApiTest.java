@@ -28,11 +28,9 @@ public class ProfileApiTest extends TestWithCurrentUser {
 
   private User anotherUser;
 
-  @Autowired
-  private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
-  @MockBean
-  private ProfileQueryService profileQueryService;
+  @MockBean private ProfileQueryService profileQueryService;
 
   private ProfileData profileData;
 

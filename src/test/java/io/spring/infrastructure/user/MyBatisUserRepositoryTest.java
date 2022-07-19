@@ -15,8 +15,7 @@ import org.springframework.context.annotation.Import;
 @Import(MyBatisUserRepository.class)
 public class MyBatisUserRepositoryTest extends DbTestBase {
 
-  @Autowired
-  private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
   private User user;
 
   @BeforeEach

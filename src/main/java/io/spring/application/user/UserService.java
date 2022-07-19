@@ -70,8 +70,7 @@ public class UserService {
 
 class UpdateUserValidator implements ConstraintValidator<UpdateUserConstraint, UpdateUserCommand> {
 
-  @Autowired
-  private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
 
   @Override
   public boolean isValid(UpdateUserCommand value, ConstraintValidatorContext context) {

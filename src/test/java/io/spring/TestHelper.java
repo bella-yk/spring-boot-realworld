@@ -3,8 +3,8 @@ package io.spring;
 import io.spring.application.data.ArticleData;
 import io.spring.application.data.HistoryData;
 import io.spring.application.data.ProfileData;
-import io.spring.core.article.Article;
 import io.spring.common.enums.HistoryAction;
+import io.spring.core.article.Article;
 import io.spring.core.user.User;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,11 +43,6 @@ public class TestHelper {
   }
 
   public static HistoryData historyDataFixture(Article article, User user) {
-    return new HistoryData(
-            20,
-            HistoryAction.NEW,
-            article.getId(),
-            DateTime.now(),
-            null);
+    return new HistoryData(20, HistoryAction.NEW, article.getId(), DateTime.now(), null);
   }
 }
